@@ -1,10 +1,8 @@
-var SlidingDancer = function(top, left, timeBetweenSteps){
+var RandomDancer = function(top, left, timeBetweenSteps){
 //  var oldStep = Dancer.prototype.step;
   Dancer.apply(this,arguments);
 
   this.setPosition(top, left);
-  this.timeBetweenSteps = timeBetweenSteps;
-
 
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
@@ -12,7 +10,7 @@ var SlidingDancer = function(top, left, timeBetweenSteps){
 
 };
 
-SlidingDancer.prototype.step = function(){
+RandomDancer.prototype.step = function(){
     // call the old version of step at the beginning of any call to this new version of step
 
     Dancer.prototype.step.apply(this);
@@ -21,12 +19,11 @@ SlidingDancer.prototype.step = function(){
     // See http://api.jquery.com/category/effects/ for this and
     // other effects you can use on a jQuery-wrapped html tag.
 
-    this.$node.fadeToggle(2000);
+    this.$node.slideToggle(2000);
   };
 
-SlidingDancer.prototype.setPosition = Dancer.prototype.setPosition;
+RandomDancer.prototype.setPosition = Dancer.prototype.setPosition;
 
-SlidingDancer.prototype.setColor = function(){
-  this.$node.addClass('slider');
+RandomDancer.prototype.setColor = function(){
+  this.$node.addClass('random');
 };
-

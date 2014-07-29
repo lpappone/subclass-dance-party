@@ -3,21 +3,19 @@ describe("slidingDancer", function() {
   var slidingDancer;
   var timeBetweenSteps = 100;
   var clock;
-
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    debugger;
-    slidingDancer = new slidingDancer(10, 20, timeBetweenSteps);
+    slidingDancer = new SlidingDancer(10, 20, timeBetweenSteps);
   });
 
   it("should have a jQuery $node object", function(){
     expect(slidingDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  it("should have a step function that makes its node blink", function() {
-    sinon.spy(slidingDancer.$node, 'toggle');
+  it("should have a step function that makes its node fade toggle", function() {
+    sinon.spy(slidingDancer.$node, 'fadeToggle');
     slidingDancer.step();
-    expect(slidingDancer.$node.toggle.called).to.be.true;
+    expect(slidingDancer.$node.fadeToggle.called).to.be.true;
   });
 
   describe("dance", function(){
